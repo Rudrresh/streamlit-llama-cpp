@@ -3,9 +3,8 @@ import os
 from huggingface_hub import hf_hub_download
 # Load the LLM from GGUF file
 
-repo_id = "Hiridharan10/llama-3-3b-coder-V2-gguf"
-
-model_file = "llama-3-3b-coder.gguf"
+repo_id = "Rudrresh/cdoeforces-llama-gguf"
+odel_file = "llama-3-3b-coder.gguf"
 model_path = hf_hub_download(repo_id = repo_id, filename=model_file)
 # n_threads
 llm = Llama(model_path=model_path,n_gpu_layers=30,n_ctx=512,temperature=0.2,repeat_penalty=1.1,top_k_sampling=40,top_p_sampling=0.95,min_p_sampling=0.05)
