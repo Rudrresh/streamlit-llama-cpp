@@ -29,13 +29,13 @@ if TYPE_CHECKING:
         CtypesFuncPointer,
     )
 
-
+import streamlit as st
 # Specify the base name of the shared library to load
 _lib_base_name = "llama"
 _override_base_path = os.environ.get("LLAMA_CPP_LIB_PATH")
 #_base_path = pathlib.Path(os.path.abspath(os.path.dirname(__file__))) / "lib" if _override_base_path is None else pathlib.Path(_override_base_path)
 base_path = '../lib/'
-st.write('base_path ',base_path)
+st.write('base_path ')
 # Load the library
 _lib = load_shared_library(_lib_base_name, _base_path)
 ctypes_function = ctypes_function_for_shared_library(_lib)
