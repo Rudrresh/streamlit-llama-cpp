@@ -5,8 +5,13 @@ import pathlib
 lib_path = pathlib.Path("lib/libllama.so")
 st.write("Does libllama.so exist at runtime?", lib_path.exists())
 st.write("Absolute path:", lib_path.resolve())
-from huggingface_hub import hf_hub_download
+
+# Force override to absolute path of your lib
+import llama_cpp.llama_cpp as llama_core
+llama_core._override_base_path = "/mount/src/streamlit-llama-cpp/lib"
+
 from llama_cpp import Llama
+from huggingface_hub import hf_hub_download
 # Load the LLM from GGUF file
 repo_id = "Rudrresh/cdoeforces-llama-gguf"
 odel_file = "llama-3-3b-coder.gguf"
