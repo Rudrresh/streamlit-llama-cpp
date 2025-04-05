@@ -42,6 +42,7 @@ _base_path = (
 )
 os.environ["LD_LIBRARY_PATH"] = str(_base_path) + ":" + os.environ.get("LD_LIBRARY_PATH", "")
 st.write('base_path ',_base_path)
+st.write("LD_LIBRARY_PATH ", os.environ["LD_LIBRARY_PATH"])
 # Load the library
 _lib = load_shared_library(_lib_base_name, _base_path)
 ctypes_function = ctypes_function_for_shared_library(_lib)
