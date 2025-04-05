@@ -40,6 +40,16 @@ _base_path = (
     if _override_base_path is not None
     else pathlib.Path(__file__).resolve().parent.parent / "lib"
 )
+existing_ld_path = os.environ.get("LD_LIBRARY_PATH", "")
+ld_paths = existing_ld_path.split(":") if existing_ld_path else []
+
+# Convert to string just in case _base_path is a Path object
+base_path_str = str(_base_path)
+
+if base_path_str not in ld_paths:
+    ld_paths.insert(0, base_path_str)  # Prepend so it's searched first
+    os.environ["LD_LIBRARY_PATH"] = ":".join(ld_paths)
+
 st.write('base_path ',_base_path)
 st.write("LD_LIBRARY_PATH ", os.environ["LD_LIBRARY_PATH"])
 # Load the library
