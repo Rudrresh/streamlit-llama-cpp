@@ -1,8 +1,10 @@
-from llama_cpp import Llama
 import os
+import streamlit as st
+st.write("Working directory:", os.getcwd())
+st.write("lib/ contents:", os.listdir("lib") if os.path.exists("lib") else "lib not found")
 from huggingface_hub import hf_hub_download
+from llama_cpp import Llama
 # Load the LLM from GGUF file
-
 repo_id = "Rudrresh/cdoeforces-llama-gguf"
 odel_file = "llama-3-3b-coder.gguf"
 model_path = hf_hub_download(repo_id = repo_id, filename=model_file)
