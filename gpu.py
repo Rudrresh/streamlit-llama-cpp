@@ -1,7 +1,10 @@
 import os
 import streamlit as st
-st.write("Working directory:", os.getcwd())
-st.write("lib/ contents:", os.listdir("lib") if os.path.exists("lib") else "lib not found")
+import pathlib
+
+lib_path = pathlib.Path("lib/libllama.so")
+st.write("Does libllama.so exist at runtime?", lib_path.exists())
+st.write("Absolute path:", lib_path.resolve())
 from huggingface_hub import hf_hub_download
 from llama_cpp import Llama
 # Load the LLM from GGUF file
