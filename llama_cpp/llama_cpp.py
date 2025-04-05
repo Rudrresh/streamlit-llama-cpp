@@ -40,6 +40,7 @@ _base_path = (
     if _override_base_path is not None
     else pathlib.Path(__file__).resolve().parent.parent / "lib"
 )
+os.environ["LD_LIBRARY_PATH"] = str(_base_path) + ":" + os.environ.get("LD_LIBRARY_PATH", "")
 st.write('base_path ',_base_path)
 # Load the library
 _lib = load_shared_library(_lib_base_name, _base_path)
